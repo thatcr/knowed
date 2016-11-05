@@ -23,29 +23,6 @@ class LoggingContext(object):
 node_context.context = LoggingContext
 
 
-class MetaNodeDescriptor(object):
-    '''
-    used to represent a node declaration in a class that is later converted into
-    a concrete property descriptor type in the metaclass
-    '''
-    def __init__(self, fget=None, fset=None, fdel=None, doc=None):
-        self.fget = fget
-        self.fset = fset
-        self.fdel = fdel
-        if doc is None and fget is not None:
-            doc = fget.__doc__
-        self.__doc__ = doc
-
-    def getter(self, fget):
-        return type(self)(fget, self.fset, self.fdel, self.__doc__)
-
-    def setter(self, fset):
-        return type(self)(self.fget, fset, self.fdel, self.__doc__)
-
-    def deleter(self, fdel):
-        return type(self)(self.fget, self.fset, fdel, self.__doc__)
-
-
 class FunctionNodeDescriptor(object):
     trace = [[]]
     def __init__(self, fget=None, fset=None, fdel=None, doc=None):
