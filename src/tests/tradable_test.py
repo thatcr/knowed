@@ -22,41 +22,43 @@ class LoggingContext(object):
 
 node_context.context = LoggingContext
 
+# how do we represnet nodes with argumnets: assignment syntax is awkwards
 
-class FunctionNodeDescriptor(object):
-    trace = [[]]
-    def __init__(self, fget=None, fset=None, fdel=None, doc=None):
-        self.fget = fget
-        self.fset = fset
-        self.fdel = fdel
-        self.doc = doc
+'''
+foo.Currency['x', 1, 2]  =
+foo.Currency['x', 3, 4]
 
-    def __get__(self, obj, objtype=None):
-        if obj is None:
-            return self
-        if self.fget is None:
-            raise AttributeError("unreadable attribute")
+__getitem__, __setitem__, __delitem__
 
-        self.trace[-1].append((obj, self))
-        self.trace.append([])
+use slice syntax? allow for mnulticalls with slicing, nicely?
 
-        with node_context.context(obj, self):
-            return self.fget(obj)
+'''
 
-    def __set__(self, obj, value):
-        if self.fset is None:
-            raise AttributeError("can't set attribute")
-        self.fset(obj, value)
+'''
+better way
 
-    def __delete__(self, obj):
-        if self.fdel is None:
-            raise AttributeError("can't delete attribute")
-        self.fdel(obj)
+-  need objects to be singleone on __new__, with avoided __init_, soo x('A") is x('A'),
+- the we have a better equivalence for caching:
 
-    def __repr__(self):
-        return self.__class__.__name__
 
-class TradableMetaClass(type):
+- remap the Thing call into an object with a property of that name.
+def Thing(self, arg1, arg2):
+    ....
+
+- ThingCaller(self, arg1, arg2).Thing
+
+THat means that the cache still only deals with object, descriptor as keps/values of nodes.
+The name resolution logic sits in the getter. But we have to remmeber the sets of argumenst that were invoked.
+
+- Or a better syntax?
+
+self[arg1, arg2].Thing
+
+- define a cached space of called object with arguments,
+
+'''
+
+class NodeMetaClass(type):
     def __new__(cls, name, bases, nmspc):
         # translate any node descriptors into distinct types
         for key, value in nmspc.items():
@@ -65,15 +67,28 @@ class TradableMetaClass(type):
             # what it the value is a node descriptor from _another_ class? do we make our own...
             # getters on that will get an unexpected instance, which may be ok
 
-            nmspc[key] = type(key + 'Descriptor', (FunctionNodeDescriptor,), {})(
+            nmspc[key] = type(key + 'Descriptor', (property,), {})(
                 fget=value.fget, fset=value.fset, fdel=value.fdel, doc=value.__doc__
             )
 
         return super().__new__(cls, name, bases, nmspc)
 
+class NodeBase(object, metaclass=NodeMetaClass):
+    trace = [[]]
+
+    def __getattribute__(self, item):
+        desc = getattr(super().__getattribute__('__class__'), item, None)
+        if isinstance(desc, property):
+            # should we stack up contexts here? or use the same one?
+            with node_context.context(self, desc):
+                return super().__getattribute__(item)
+        else:
+            return super().__getattribute__(item)
+
+
 node = property
 
-class Cash(metaclass=TradableMetaClass):
+class Cash(NodeBase):
     @node
     def Currency(self) -> str:
         '''this is a 'defaulter' and returns the value represented by the node if not set'''
