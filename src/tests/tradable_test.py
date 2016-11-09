@@ -1,14 +1,39 @@
+import sys
 import logging
 import threading
 from collections import defaultdict
+import networkx as nx
 from pprint import pformat
 
 logging.basicConfig(level=logging.DEBUG)
 
 node_context = threading.local()
 
-class TestContext(dict):
+# TODO replace the 2-tuple with something that repres nicely: a BoundDesc (are boundfuncs the same? )
+# TODO implement named object defined by the cache of their init functions
+# TODO re-use that to implement the Args(...) idea for properties with multiple values
+# TODO how do we expose args? We really want named args.
+# TODO Args objects are cached on the object itself and return the same thing based upon the
+#      the arguments and the object instance. THey then cache the VTs on tha tobject.
+'''
+    obj.PriceWhen(123, X=0)
+    obj.PriceWhen(123, X=0) < won't ever work
+    obj.PriceWhen[123, X=0] < won't work, no named.
+    obj.PriceWHen[123, X=0] = 123, but that works. trailing dict is kwargs? or enforce kwargs.
 
+    obj.__args__(123, X=0).PriceWhen = foo # ok but clunky
+
+    the [] syntax works nicely, could also extend to ranges or arguments, but prevens any named arguments.
+    by can alway do
+    boj.PriceWhen[{'X'= 0}]
+
+    no escaling the assigment problem.
+
+
+
+
+'''
+class TrialContext(dict):
 
     def __init__(self):
         self.stack = []
@@ -39,15 +64,32 @@ class TestContext(dict):
         assert self.indent == 0, 'attempted to set node as part of an evaluation'
         logging.debug('SET {!r} = {!r}'.format(key, value))
 
-        # does this value end up on graph? yes. SetRetain means on graph, but not on object
+        # does this vale end up on graph? yes. SetRetain means on graph, but not on object
         # @Stored means put it in the __dict__
 
         obj, desc = key
+
+        # evict everything from the cache with this node as a parent
+        ancestors = [key]
+        for ancestor in ancestors:
+            logging.debug('FOR {!r}'.format(ancestor))
+            ancestors.extend(self.parents.pop(ancestor, []))
+            self.pop(ancestor, None)
+
+        # now just set it via the descriptor, we don't need this on-graph yet
         desc.__set__(obj, value)
 
+    def to_log(self, logger):
+        for key, value in self.items():
+            logging.info('CACHE {key[0]!r}.{key[1]!r} = {value!r}'.format(key=key, value=value))
+
+        for key, value in self.parents.items():
+            logging.info('{key[0]!r}.{key[1]!r}'.format(key=key))
+            for parent in value:
+                logging.info('   < {key[0]!r}.{key[1]!r}'.format(key=parent))
 
 
-node_context.context = TestContext()
+node_context.context = TrialContext()
 
 # how do we represnet nodes with argumnets: assignment syntax is awkwards
 class NodeDescriptor(property):
@@ -135,13 +177,7 @@ def test_cash():
     c.Currency = 'USD'
     c.Quantity = 100.0
 
-    for key, value in node_context.context.items():
-        logging.info('CACHE {key[0]!r}.{key[1]!r} = {value!r}'.format(key=key, value=value))
 
-    for key, value in node_context.context.parents.items():
-        logging.info('{key[0]!r}.{key[1]!r}'.format(key=key))
-        for parent in value:
-            logging.info('   < {key[0]!r}.{key[1]!r}'.format(key=parent))
 
     assert c.Price == 100.0
 
