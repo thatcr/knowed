@@ -7,15 +7,16 @@ class IdentifiedMetaClass(type):
         # when we retrieve from the cache, but how to avoid inheritance
         return super().__new__(meta, name, bases, nmspc)
 
-class IdentifiedBase(object, metaclass=IdentifiedMetaClass):
-    def __new__(cls, *args):
+    def __call__(cls, *args):
         instance = cls.__cache__.get(args, None)
-        if args:
+        if instance:
             return instance
-        instance = super().__new__(cls)
+        instance = super().__call__(cls, *args)
         cls.__cache__[args] = instance
         return instance
 
+class IdentifiedBase(object, metaclass=IdentifiedMetaClass):
+    pass
 
 class TrialIdentified(IdentifiedBase):
     def __init__(self, *args):
@@ -30,5 +31,6 @@ def test_identified():
     y = TrialIdentified('fish')
 
     assert x is y
+    assert x is not TrialIdentified('fish', 'chaps')
 
 
