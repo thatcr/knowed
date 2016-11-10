@@ -49,6 +49,9 @@ class TrialContext(dict):
             self.parents[key].add(self.stack[-1])
         self.stack.append(key)
         try:
+            # reconsider should invalid nodes point to Ellipsis so we have a record?
+            # is that faster than eviction? trouble is parent graph is invalid at that point
+            # so we need to lose that anyway
             if key in self:
                 logging.debug('    ' * self.indent + 'REM {!r}'.format(key))
                 return super().__getitem__(key)

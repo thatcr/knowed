@@ -1,5 +1,6 @@
 
 from weakref import WeakValueDictionary
+
 class IdentifiedMetaClass(type):
     def __new__(meta, name, bases, nmspc):
         nmspc['__cache__'] = WeakValueDictionary()
