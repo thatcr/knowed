@@ -1,8 +1,8 @@
 
-
+from weakref import WeakValueDictionary
 class IdentifiedMetaClass(type):
     def __new__(meta, name, bases, nmspc):
-        nmspc['__cache__'] = {}
+        nmspc['__cache__'] = WeakValueDictionary()
         # need to manipulate __init__ so that it isn't called twice
         # when we retrieve from the cache, but how to avoid inheritance
         return super().__new__(meta, name, bases, nmspc)
@@ -32,5 +32,7 @@ def test_identified():
 
     assert x is y
     assert x is not TrialIdentified('fish', 'chaps')
+
+    assert TrialIdentified('foo', 'bar') is TrialIdentified('foo', 'bar')
 
 

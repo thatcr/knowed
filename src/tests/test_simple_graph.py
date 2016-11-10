@@ -156,6 +156,9 @@ class Cash(NodeBase):
     def Quantity(self) -> float:
         return self.__dict__.get('Quantity', 1.0)
 
+    # TODO the key into __dict__ here should be the descriptor?
+    # how does the set value relate to the graph: are we setting the database, or now.
+    # is the storage layer a different thing: should __dict__ be backed by the graph?
     @Quantity.setter
     def Quantity(self, value : float):
         if value <= 0.0:
