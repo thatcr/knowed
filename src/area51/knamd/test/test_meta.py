@@ -27,3 +27,4 @@ def test_instances():
 
     assert Thing('a').args == ('a',)
     assert Thing('a', 123).args == ('a', 123)
+

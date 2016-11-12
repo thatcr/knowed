@@ -83,6 +83,13 @@ class FibonacciThingy(object):
             return 1
         return self.Fib[item - 1] + self.Fib[item - 2]
 
+    def method_fib(self, item):
+        if item < 0:
+            raise KeyError('must be bigger than 0')
+        if item == 0 or item == 1:
+            return 1
+        return barefaced_fib(item - 1) + barefaced_fib(item - 2)
+
 def test_fibonacci():
     t = FibonacciThingy()
 
