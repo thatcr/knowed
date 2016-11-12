@@ -1,10 +1,10 @@
-from ..meta import KnamedClass
+from ..meta import NamdClass
 from collections.abc import MappingView
 
 from pytest import raises
 
 def test_meta_construction():
-    class Thing(metaclass=KnamedClass):
+    class Thing(metaclass=NamdClass):
         pass
 
     assert hasattr(Thing, '__cache__')
@@ -13,7 +13,7 @@ def test_meta_construction():
     # assert isinstance(Thing.__cache__, MappingView)
 
 def test_instances():
-    class Thing(metaclass=KnamedClass):
+    class Thing(metaclass=NamdClass):
         def __init__(self, *args):
             self.args = args
 

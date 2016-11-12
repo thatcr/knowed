@@ -1,7 +1,7 @@
-from ..abc import KnamedObject
+from ..abc import NamdObject
 
 def test_names():
-    class Thing(KnamedObject):
+    class Thing(NamdObject):
         pass
 
     assert str(Thing()) ==  'Thing'

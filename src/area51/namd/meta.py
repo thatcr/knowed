@@ -1,5 +1,5 @@
 
-class KnamedClass(type):
+class NamdClass(type):
     def __new__(meta, name, bases, nmspc):
         '''
         adds a class level __cache__ member to store instances of this type
