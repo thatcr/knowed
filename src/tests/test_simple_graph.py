@@ -37,23 +37,18 @@ class TrialContext(dict):
 
     def __init__(self):
         self.stack = []
-        self.indent = 0
-        self.parents = defaultdict(set)
+        self.children = defaultdict(set)
 
     def __getitem__(self, key):
         obj, desc = key
-        logging.debug('    GET ' * self.indent + repr((obj, desc)))
+        logging.debug('GET ' + '..' * len(self.stack) +  repr((obj, desc)))
 
-        self.indent +=1
         if self.stack:
-            self.parents[key].add(self.stack[-1])
+            self.children[key].add(self.stack[-1])
         self.stack.append(key)
         try:
-            # reconsider should invalid nodes point to Ellipsis so we have a record?
-            # is that faster than eviction? trouble is parent graph is invalid at that point
-            # so we need to lose that anyway
             if key in self:
-                logging.debug('    ' * self.indent + 'REM {!r}'.format(key))
+                logging.debug('REM ' + '..' * len(self.stack) + repr(key))
                 return super().__getitem__(key)
 
             value = desc.__get__(obj)
@@ -61,10 +56,9 @@ class TrialContext(dict):
             return value
         finally:
             self.stack.pop()
-            self.indent -= 1
 
     def __setitem__(self, key, value):
-        assert self.indent == 0, 'attempted to set node as part of an evaluation'
+        assert len(self.stack) == 0, 'attempted to set node as part of an evaluation'
         logging.debug('SET {!r} = {!r}'.format(key, value))
 
         # does this vale end up on graph? yes. SetRetain means on graph, but not on object
@@ -73,11 +67,11 @@ class TrialContext(dict):
         obj, desc = key
 
         # evict everything from the cache with this node as a parent
-        ancestors = [key]
-        for ancestor in ancestors:
-            logging.debug('FOR {!r}'.format(ancestor))
-            ancestors.extend(self.parents.pop(ancestor, []))
-            self.pop(ancestor, None)
+        offspring = [key]
+        for offsprung in offspring:
+            logging.debug('FOR {!r}'.format(offsprung))
+            offspring.extend(self.children.pop(offsprung, []))
+            self.pop(offsprung, None)
 
         # now just set it via the descriptor, we don't need this on-graph yet
         desc.__set__(obj, value)
@@ -86,7 +80,7 @@ class TrialContext(dict):
         for key, value in self.items():
             logging.info('CACHE {key[0]!r}.{key[1]!r} = {value!r}'.format(key=key, value=value))
 
-        for key, value in self.parents.items():
+        for key, value in self.children.items():
             logging.info('{key[0]!r}.{key[1]!r}'.format(key=key))
             for parent in value:
                 logging.info('   < {key[0]!r}.{key[1]!r}'.format(key=parent))
