@@ -58,7 +58,8 @@ class TrialContext(dict):
             self.stack.pop()
 
     def __setitem__(self, key, value):
-        assert len(self.stack) == 0, 'attempted to set node as part of an evaluation'
+        if not self.stack:
+            raise AttributeError('cannot set values whilst computing values')
         logging.debug('SET {!r} = {!r}'.format(key, value))
 
         # does this vale end up on graph? yes. SetRetain means on graph, but not on object
@@ -148,6 +149,13 @@ class Cash(NodeBase):
         if value not in {'EUR', 'USD'}:
             raise ValueError('invalid currency {}'.format(value))
         self.__dict__['Currency'] = value
+
+    @node
+    def IndexedThing(self, item):
+        # warpper makes cache key around item, stores nodes keyed on that.
+        # how do we ensure cache loses them when this is lost
+        # are weakrefs the only way?
+        pass
 
     @node
     def Quantity(self) -> float:

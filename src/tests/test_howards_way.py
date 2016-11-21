@@ -48,7 +48,7 @@ assert o.AnotherThing == int(123.123 * 2.0) + 123.123
 # how do we know which nodes to recompute if all we have is the topological sort?
 # I think we are missing some information.
 
-
+#
 
 # caching/storage is done on the object, so __cache__ is keyed on the node
 
