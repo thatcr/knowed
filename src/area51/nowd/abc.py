@@ -22,7 +22,7 @@ class NowdObject(object):
             # should we stack up contexts here? or use the same one?
             NowdScope.context[self, desc] = value
             return
-        return super().__setattr__(self, item, value)
+        return super().__setattr__(item, value)
 
 class NowdScope(object):
     _stack = []

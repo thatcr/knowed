@@ -1,1 +1,1 @@
-from .abc import NamedObject
+from .abc import NamdObject

@@ -18,15 +18,16 @@ class LoggingScope(NullScope):
         self.log = log
 
     def __getitem__(self, item):
-        self.logger.debug('GET ' * self.indent * '..' + repr(item))
+        self.log.debug('GET ' + self.indent * '..' + repr(item))
         self.indent += 1
         try:
-            return super().__getitem__
+            return super().__getitem__(item)
         finally:
             self.indent -= 1
 
     def __setitem__(self, item, value):
-        self.logger.debug('SET {!r} = {!r}'.format(item, value))
+        self.log.debug('SET {!r} = {!r}'.format(item, value))
+        return super().__setitem__(item, value)
 
 class DictScope(NowdScope):
     def __init__(self, cache_type=dict):
