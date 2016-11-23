@@ -1,4 +1,4 @@
-from ..abc import NamdObject
+from ..base import NamdObject
 
 def test_names():
     class Thing(NamdObject):

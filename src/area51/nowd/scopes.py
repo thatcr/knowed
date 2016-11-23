@@ -1,6 +1,28 @@
 import logging
-from .abc import NowdScope
+
 from collections import defaultdict
+
+class NowdScope(object):
+    _stack = []
+
+    def __enter__(self):
+        NowdScope._stack.append(NowdScope.context)
+        assert self not in NowdScope._stack, 'context is already on the stack'
+        NowdScope.context = self
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        NowdScope.context = NowdScope._stack.pop()
+
+    def __getitem__(self, item):
+        instance, desc = item
+        return desc.__get__(instance)
+
+    def __setitem__(self, item, value):
+        instance, desc = item
+        return desc.__set__(instance, value)
+
+NowdScope.context = NowdScope()
 
 class NullScope(NowdScope):
     def __getitem__(self, item):
@@ -64,10 +86,7 @@ class DictScope(NowdScope):
 
         self.cache[item] = value
 
-        # now just set it via the descriptor, we don't need this on-graph yet
-        # don't: if we are in a scope we're overriding values?
-        # in order to set we have to 'escape' the scope: push a NullContext?
-        # desc.__set__(obj, value)
+        # TODO how do we interact with __setitem__ here?
 
     # convert nodes -> dict for pformatting?
     def to_log(self, logger):

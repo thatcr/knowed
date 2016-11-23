@@ -1,7 +1,6 @@
-from .abc import NowdObject
 
 from .descriptors import nowd
-from .abc import NowdObject
+from .base import NowdObject
 
 from .scopes import (
     NullScope, DictScope, LoggingScope

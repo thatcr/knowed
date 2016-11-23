@@ -1,16 +1,5 @@
 from .meta import NamdClass
 
-'''
-NOTE the types of __init__ can be used to generate an autocomplete + grammar for resolving items:
-    if we have a sequenceof class, values we can complete lexeme tokens and a grammar with ply
-
-TODO turn kwargs into a mush, so args map to clean strings, kwags to some hash (careful with dict ordering)
-     what is an acceptable collisiotn on mush? can we re-mush other object names (bad).
-
-     do we need to store a weakref dict of instances?
-
-
-'''
 
 class NamdObject(object, metaclass=NamdClass):
     def __init__(self, *args):

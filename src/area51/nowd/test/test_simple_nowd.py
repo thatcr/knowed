@@ -16,10 +16,9 @@ class Thing(NowdObject):
 def test_fail():
     thing = Thing()
 
-    with raises(NotImplementedError):
-        assert thing.Leaf == 123.123
+    assert thing.Leaf == 123.123
 
-    with raises(NotImplementedError):
+    with raises(AttributeError):
         thing.Leaf = 256.256
 
 def test_null():

@@ -2,7 +2,7 @@ import re
 import inspect
 from ply import lex
 from ply import yacc
-from area51.namd.abc import NamdObject
+from area51.namd.base import NamdObject
 
 class name(str):
     pass

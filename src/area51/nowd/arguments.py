@@ -4,5 +4,3 @@
 # does that sit well with the __getatttr__ ting?
 # no, needs indirection.
 # perhaps __getattribute__ thing is wrong, should always defer to the descriptor.
-
-s
