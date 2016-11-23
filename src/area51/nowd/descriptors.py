@@ -11,8 +11,14 @@ class NowdDescriptor(property):
     def __repr__(self):
         return self.fget.__code__.co_name
 
-class Args(NamdObject):
-    pass
+class ArgsDescriptor(NamdObject, property):
+    def __init__(self, desc, *args):
+        super().__init__(desc, *args)
+        self.desc = desc
+        self.args = args
+
+    def __get__(self, instance, owner=None):
+        return self.desc.fget(instance, *self.args)
 
 # Args can be more expressive.
 class ArgsNowdDescriptor(property):
@@ -25,14 +31,10 @@ class ArgsNowdDescriptor(property):
         if instance is None:
             return super().__get__(instance, owner)
 
-        # if descriptor is invoked on arguments, then use them on the fget
-        if type(instance) is Args:
-            return self.fget(*instance.__init_args__)
-
         # otherwise it's a normal propery get, make a binder that routes
         # to the context (should be an object with __call__)
         def _bound(*args):
-            return NowdScope.context[Args(instance, *args), self]
+            return NowdScope.context[instance, ArgsDescriptor(self, *args)]
 
         return _bound
 

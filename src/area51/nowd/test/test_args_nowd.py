@@ -1,11 +1,5 @@
-from .. import nowd, NowdObject
-
-# should we auto detect the arguments node, so @node is our onl decorator
-# KIS @stored
-# what would the 'indexed' version look like: or is that just a dict with nodes on it's __getitem__
-# fo.Index <- normal node attached to the object, returns object then is also a NowdDictionary, where __getitem__ is
-# accessed through a dscriptor: does that work for dunder methods? or do we have to treat getitem and setitem
-# specially. can it work on regular dicts?
+from .. import nowd, NowdObject, DictScope
+import inspect
 
 class ArguedThing(NowdObject):
 
@@ -36,6 +30,32 @@ def test_args():
     assert t.Fib(1) == 1
     assert t.Fib(2) == 2
     assert t.Fib(3) == 3
+
+# TODO should objects createds in a scope be cached there (and only there?)
+
+def test_args_dict():
+
+    with DictScope() as scope:
+        t = ArguedThing()
+        assert t.Normal == 1
+        assert t.WithArgs(1, 2, 3) == 1 + 2 + 3
+
+        assert t.Fib(0) == 1
+        assert t.Fib(1) == 1
+        assert t.Fib(2) == 2
+        assert t.Fib(3) == 3
+
+    # scope is now a built graph... we can compile it.
+
+    assert inspect.isfunction(scope.cache[t, ArguedThing.WithArgs])
+    # assert hasattr(ArguedThing, 'WithArgsArgs')
+    # assert hasattr(ArguedThing, 'FibArgs')
+    #
+    # # what do we cache on:
+    # keep the object part as the ojbect, but manipulate the desc bit
+    # this is better for querying?
+
+    pass
 
 #  are args important enough to warrant 3-tuples?
 #  no, we'd still have to resolve
