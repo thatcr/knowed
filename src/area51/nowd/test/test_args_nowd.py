@@ -3,15 +3,15 @@ import inspect
 
 class ArguedThing(NowdObject):
 
-    @nowd()
+    @nowd
     def Normal(self):
         return 1
 
-    @nowd(args=True)
+    @nowd
     def WithArgs(self, a, b, c):
         return a + b + c
 
-    @nowd(args=True)
+    @nowd
     def Fib(self, x : int):
         if x < 0:
             raise ValueError('cannot compute fib on negative numbers')
@@ -47,9 +47,12 @@ def test_args_dict():
 
     # scope is now a built graph... we can compile it.
 
+    # argument descriptor just returns a function that resolves the cache
     assert inspect.isfunction(scope.cache[t, ArguedThing.WithArgs])
-    # assert hasattr(ArguedThing, 'WithArgsArgs')
-    # assert hasattr(ArguedThing, 'FibArgs')
+
+    assert hasattr(ArguedThing.WithArgs, 'Args')
+    assert hasattr(ArguedThing.Fib, 'Args')
+
     #
     # # what do we cache on:
     # keep the object part as the ojbect, but manipulate the desc bit

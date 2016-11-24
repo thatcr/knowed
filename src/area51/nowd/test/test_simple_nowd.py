@@ -5,11 +5,11 @@ from .. import nowd, NowdObject, NullScope, DictScope
 # get this working before implementing the argument basd nodes.
 
 class Thing(NowdObject):
-    @nowd()
+    @nowd
     def Leaf(self):
         return 123.123
 
-    @nowd()
+    @nowd
     def Node(self):
         return self.Leaf + self.Leaf
 

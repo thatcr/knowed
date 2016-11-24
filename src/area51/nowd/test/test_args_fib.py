@@ -2,7 +2,7 @@
 from .. import nowd, NowdObject, LoggingScope
 
 class FibThing(NowdObject):
-    @nowd(args=True)
+    @nowd
     def Fib(self, x):
         if x < 0:
             raise ValueError('cannot calculate fib < 0')

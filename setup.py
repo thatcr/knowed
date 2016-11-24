@@ -1,7 +1,5 @@
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+
+from setuptools import setup, find_packages
 
 config = {
     'description': 'Area 51 - Where they hide all the UFOs',
@@ -9,7 +7,8 @@ config = {
     'author_email': 'thatcr@gmail.com',
     'version': '0.1',
     'install_requires': [],
-    'packages': ['src/area51'],
+    'package_dir': {'': 'src'},
+    'packages': find_packages('src'),
     'scripts': [],
     'name': 'area51'
 }

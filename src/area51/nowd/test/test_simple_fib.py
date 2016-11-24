@@ -9,7 +9,7 @@ class FibThing(NamdObject, NowdObject):
             raise ValueError('cannot calculate Fib < 1')
         self.x = x
 
-    @nowd()
+    @nowd
     def Fib(self):
         if self.x == 0 or self.x == 1:
             return 1

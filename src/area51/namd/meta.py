@@ -1,4 +1,6 @@
 
+# TODO can we use an inspect.signature on the init function to make much quicker hash
+
 class NamdClass(type):
     def __new__(meta, name, bases, nmspc):
         '''

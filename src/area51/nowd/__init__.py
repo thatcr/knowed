@@ -1,5 +1,5 @@
 
-from .descriptors import nowd
+from .decorator import nowd
 from .base import NowdObject
 
 from .scopes import (
