@@ -2,17 +2,17 @@ import logging
 
 from collections import defaultdict
 
-class NowdScope(object):
+class Scope(object):
     _stack = []
 
     def __enter__(self):
-        NowdScope._stack.append(NowdScope.context)
-        assert self not in NowdScope._stack, 'context is already on the stack'
-        NowdScope.context = self
+        Scope._stack.append(Scope.context)
+        assert self not in Scope._stack, 'context is already on the stack'
+        Scope.context = self
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        NowdScope.context = NowdScope._stack.pop()
+        Scope.context = Scope._stack.pop()
 
     def __getitem__(self, item):
         instance, desc = item
@@ -22,9 +22,9 @@ class NowdScope(object):
         instance, desc = item
         return desc.__set__(instance, value)
 
-NowdScope.context = NowdScope()
+Scope.context = Scope()
 
-class NullScope(NowdScope):
+class NullScope(Scope):
     def __getitem__(self, item):
         obj, desc = item
         return desc.__get__(obj)
@@ -51,7 +51,7 @@ class LoggingScope(NullScope):
         self.log.debug('SET {!r} = {!r}'.format(item, value))
         return super().__setitem__(item, value)
 
-class DictScope(NowdScope):
+class DictScope(Scope):
     def __init__(self, cache_type=dict):
         self.cache = cache_type()
         self.stack = []

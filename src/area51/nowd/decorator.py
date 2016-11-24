@@ -1,12 +1,12 @@
 import inspect
 
-from .descriptors import NowdDescriptor
-from .arguments import ArgsNowdDescriptor
+from .descriptors import Descriptor
+from .arguments import ArgsDescriptor
 
 def nowd(fget, *args, **kwargs):
     signature = inspect.signature(fget)
 
-    base = ArgsNowdDescriptor if len(signature.parameters) > 1 else NowdDescriptor
+    base = ArgsDescriptor if len(signature.parameters) > 1 else Descriptor
     cls = type(fget.__code__.co_name + 'Descriptor', (base, ), {})
 
     return cls(fget, *args, **kwargs)
