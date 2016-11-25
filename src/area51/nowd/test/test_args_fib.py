@@ -14,8 +14,6 @@ class FibThing(NowdObject):
 def test_args_fib():
     thing = FibThing()
 
-    print(FibThing.Fib)
-
     with LoggingScope():
         with raises(ValueError):
             thing.Fib(-1)
