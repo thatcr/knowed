@@ -48,7 +48,7 @@ class LoggingScope(NullScope):
             self.indent -= 1
 
     def __setitem__(self, item, value):
-        self.log.debug('SET {!r} = {!r}'.format(item, value))
+        self.log.info('SET {!r} = {!r}'.format(item, value))
         return super().__setitem__(item, value)
 
 class DictScope(Scope):
@@ -75,8 +75,6 @@ class DictScope(Scope):
     def __setitem__(self, item, value):
         assert not self.stack, 'attempted to set node as part of an evaluation'
 
-        obj, desc = item
-
         # evict everything from the cache with this node as a parent
         dependents = [item]
         for dependent in dependents:
@@ -86,14 +84,3 @@ class DictScope(Scope):
 
         self.cache[item] = value
 
-        # TODO how do we interact with __setitem__ here?
-
-    # convert nodes -> dict for pformatting?
-    def to_log(self, logger):
-        for key, value in self.items():
-            logger.info('CACHE {key[0]!r}.{key[1]!r} = {value!r}'.format(key=key, value=value))
-
-        for key, value in self.dependents.items():
-            logging.info('{key[0]!r}.{key[1]!r}'.format(key=key))
-            for parent in value:
-                logger.info('   < {key[0]!r}.{key[1]!r}'.format(key=parent))

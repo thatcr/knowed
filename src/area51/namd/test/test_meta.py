@@ -6,7 +6,6 @@ from pytest import raises
 def test_meta_construction():
     class Thing(metaclass=NamdClass):
         pass
-
     assert hasattr(Thing, '__cache__')
     assert type(Thing.__cache__) is dict
     # what's the right abc to check?

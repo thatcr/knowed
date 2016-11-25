@@ -41,5 +41,3 @@ class ArgsDescriptor(property, metaclass=ArgsDescriptorMetaClass):
     def __repr__(self):
         return self.__class__.__name__
 
-    def __set__(self, instance, value):
-        raise NotImplementedError
