@@ -3,7 +3,7 @@ import inspect
 from .descriptors import Descriptor
 from .arguments import ArgsDescriptor
 
-def nowd(fget, *args, **kwargs):
+def node(fget, *args, **kwargs):
     signature = inspect.signature(fget)
 
     base = ArgsDescriptor if len(signature.parameters) > 1 else Descriptor

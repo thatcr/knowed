@@ -1,6 +1,6 @@
 from .scopes import Scope
 
-class NowdObject(object):
+class NodeBase(object):
     '''
     this object redirects getattribute and setattr on descriptors through to the
     node context.

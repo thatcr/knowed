@@ -1,15 +1,15 @@
 from pytest import raises
 
-from .. import nowd, NowdObject, NullScope, DictScope
+from .. import node, NodeBase, NullScope, DictScope
 
 # get this working before implementing the argument basd nodes.
 
-class Thing(NowdObject):
-    @nowd
+class Thing(NodeBase):
+    @node
     def Leaf(self):
         return 123.123
 
-    @nowd
+    @node
     def Node(self):
         return self.Leaf + self.Leaf
 
