@@ -7,14 +7,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8835b3c6-3055-44fa-98b5-8b54ac5e7add" name="Default" comment="">
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/itch_parameters.py" afterPath="$PROJECT_DIR$/notes/itch_parameters.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/test_howards_way.py" afterPath="$PROJECT_DIR$/notes/test_howards_way.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/test_identified.py" afterPath="$PROJECT_DIR$/notes/test_identified.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/test_indexed_property.py" afterPath="$PROJECT_DIR$/notes/test_indexed_property.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/test_namd_nowd.py" afterPath="$PROJECT_DIR$/notes/test_namd_nowd.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/test_parser.py" afterPath="$PROJECT_DIR$/notes/test_parser.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/test_scratch.py" afterPath="$PROJECT_DIR$/notes/test_scratch.py" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/tests/test_simple_graph.py" afterPath="$PROJECT_DIR$/notes/test_simple_graph.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/notes/test_howards_way.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/notes/test_identified.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/notes/test_namd_nowd.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/notes/test_scratch.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/notes/test_simple_graph.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/notes/test_indexed_property.py" afterPath="$PROJECT_DIR$/notes/indexed_property.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.cache/" />
@@ -32,6 +30,7 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/knowed$py_test_in_tests.coverage" NAME="py.test in tests Coverage Results" MODIFIED="1480114774658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/knowed$py_test_in_test.coverage" NAME="py.test in test Coverage Results" MODIFIED="1480115702101" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/knowed$py_test_in_test_parser_py.coverage" NAME="py.test in test_parser.py Coverage Results" MODIFIED="1480115992751" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -49,11 +48,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/requirements.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
-              <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+              <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test_parser.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/notes/test_parser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="indexed_property.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/notes/indexed_property.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-810">
+              <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="itch_parameters.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/notes/itch_parameters.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -196,7 +227,7 @@
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.py.test in test">
+  <component name="RunManager" selected="Python tests.py.test in test_parser.py">
     <configuration default="false" name="py.test in tests" type="tests" factoryName="py.test" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -241,6 +272,31 @@
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="testToRun" value="$PROJECT_DIR$/src/area51/nowd/test" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="py.test in test_parser.py" type="tests" factoryName="py.test" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="knowed" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="$PROJECT_DIR$/notes/test_parser.py" />
       <option name="keywords" value="" />
       <option name="params" value="" />
       <option name="USE_PARAM" value="false" />
@@ -455,14 +511,16 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="3">
       <item index="0" class="java.lang.String" itemvalue="Python tests.py.test in tests" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.py.test in test" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.py.test in test_parser.py" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.py.test in test" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.py.test in tests" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Python tests.py.test in test_parser.py" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.py.test in test" />
+        <item index="2" class="java.lang.String" itemvalue="Python tests.py.test in tests" />
       </list>
     </recent_temporary>
   </component>
@@ -498,16 +556,17 @@
       <option name="project" value="LOCAL" />
       <updated>1480115737837</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="move scruffy tests out of the way">
+      <created>1480115831987</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1480115831987</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="py_test_in_test - 2016.11.25 at 23h 09m 14s.xml">
-      <configuration name="py.test in test" configurationId="tests" />
-    </history-entry>
-    <history-entry file="py_test_in_test - 2016.11.25 at 23h 09m 31s.xml">
-      <configuration name="py.test in test" configurationId="tests" />
-    </history-entry>
     <history-entry file="py_test_in_test - 2016.11.25 at 23h 09m 44s.xml">
       <configuration name="py.test in test" configurationId="tests" />
     </history-entry>
@@ -532,18 +591,25 @@
     <history-entry file="py_test_in_test - 2016.11.25 at 23h 15m 03s.xml">
       <configuration name="py.test in test" configurationId="tests" />
     </history-entry>
+    <history-entry file="py_test_in_test_parser_py - 2016.11.25 at 23h 19m 36s.xml">
+      <configuration name="py.test in test_parser.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="py_test_in_test_parser_py - 2016.11.25 at 23h 19m 54s.xml">
+      <configuration name="py.test in test_parser.py" configurationId="tests" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="1108" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14010416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14010416" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32916266" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4475457" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4475457" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -552,7 +618,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -566,7 +631,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="remove print&#10;update requirements.txt&#10;add travis CI config" />
     <MESSAGE value="fix pytest version" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix pytest version" />
+    <MESSAGE value="move scruffy tests out of the way" />
+    <option name="LAST_COMMIT_MESSAGE" value="move scruffy tests out of the way" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -613,11 +679,77 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/notes/test_howards_way.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/indexed_property.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-810">
+          <caret line="18" column="36" lean-forward="false" selection-start-line="18" selection-start-column="36" selection-end-line="18" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/test_identified.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/itch_parameters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/test_namd_nowd.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
-          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/test_scratch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-399">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/test_simple_graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2124">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notes/test_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
