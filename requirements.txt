@@ -1,4 +1,4 @@
-pytest
+pytest>=3
 pytest-catchlog
 pytest-coverage
 pytest-benchmark
