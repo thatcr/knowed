@@ -13,8 +13,6 @@ class FibThing(NowdObject):
 def test_args_fib():
     thing = FibThing()
 
-    print(FibThing.Fib)
-
     with LoggingScope():
         assert thing.Fib(0) == 1
         assert thing.Fib(1) == 1

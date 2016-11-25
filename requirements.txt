@@ -1,0 +1,4 @@
+pytest
+pytest-catchlog
+pytest-coverage
+pytest-benchmark
