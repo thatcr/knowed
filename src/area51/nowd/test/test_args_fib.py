@@ -1,3 +1,4 @@
+from pytest import raises
 
 from .. import nowd, NowdObject, LoggingScope
 
@@ -16,6 +17,9 @@ def test_args_fib():
     print(FibThing.Fib)
 
     with LoggingScope():
+        with raises(ValueError):
+            thing.Fib(-1)
+
         assert thing.Fib(0) == 1
         assert thing.Fib(1) == 1
         assert thing.Fib(2) == 2
