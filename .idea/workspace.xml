@@ -7,12 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8835b3c6-3055-44fa-98b5-8b54ac5e7add" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/notes/test_howards_way.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/notes/test_identified.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/notes/test_namd_nowd.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/notes/test_scratch.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/notes/test_simple_graph.py" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/notes/test_indexed_property.py" afterPath="$PROJECT_DIR$/notes/indexed_property.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/notes/test_parser.py" afterPath="$PROJECT_DIR$/notes/itch_parser.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.cache/" />
@@ -58,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_parser.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/notes/test_parser.py">
+      <file leaf-file-name="itch_parser.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/notes/itch_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+            <state relative-caret-position="300">
+              <caret line="20" column="15" lean-forward="true" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -193,6 +188,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="area51" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -563,7 +562,14 @@
       <option name="project" value="LOCAL" />
       <updated>1480115831987</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="rename scruffy tests so they don't run">
+      <created>1480116030225</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1480116030225</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -606,7 +612,7 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32916266" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32916266" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4475457" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -632,7 +638,8 @@
     <MESSAGE value="remove print&#10;update requirements.txt&#10;add travis CI config" />
     <MESSAGE value="fix pytest version" />
     <MESSAGE value="move scruffy tests out of the way" />
-    <option name="LAST_COMMIT_MESSAGE" value="move scruffy tests out of the way" />
+    <MESSAGE value="rename scruffy tests so they don't run" />
+    <option name="LAST_COMMIT_MESSAGE" value="rename scruffy tests so they don't run" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -743,10 +750,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes/test_parser.py">
+    <entry file="file://$PROJECT_DIR$/notes/itch_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+        <state relative-caret-position="300">
+          <caret line="20" column="15" lean-forward="true" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
