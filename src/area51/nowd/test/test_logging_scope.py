@@ -11,6 +11,10 @@ class Thing(NodeBase):
     def Thang(self, value):
         self.__dict__['Thang'] = value
 
+    @Thang.deleter
+    def Thang(self):
+        self.__dict__.pop('Thang', None)
+
     @node
     def Thong(self):
         return self.Thang + self.Thang
@@ -20,15 +24,17 @@ def test_logging_scope_debug(caplog):
     with caplog.at_level(logging.DEBUG):
         with LoggingScope():
             assert t.Thang == 123.123
+            del t.Thang
             assert t.Thong == t.Thang * 2
 
-        assert len(caplog.records) == 5
+        assert len(caplog.records) == 6
 
         assert caplog.records[0].message == 'GET {!r}'.format((t, Thing.Thang))
-        assert caplog.records[1].message == 'GET {!r}'.format((t, Thing.Thong))
-        assert caplog.records[2].message == 'GET ..{!r}'.format((t, Thing.Thang))
+        assert caplog.records[1].message == 'DEL {!r}'.format((t, Thing.Thang))
+        assert caplog.records[2].message == 'GET {!r}'.format((t, Thing.Thong))
         assert caplog.records[3].message == 'GET ..{!r}'.format((t, Thing.Thang))
-        assert caplog.records[4].message == 'GET {!r}'.format((t, Thing.Thang))
+        assert caplog.records[4].message == 'GET ..{!r}'.format((t, Thing.Thang))
+        assert caplog.records[5].message == 'GET {!r}'.format((t, Thing.Thang))
 
 def test_logging_scope_info(caplog):
     thing = Thing()

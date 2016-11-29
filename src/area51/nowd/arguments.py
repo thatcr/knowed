@@ -21,7 +21,7 @@ class ArgsDescriptorMetaClass(type):
     reduce the size of the cache to be only those args used on that particular descriptor.
     """
     def __new__(meta, name, bases, nmspc):
-        nmspc['Args'] = type('Args', (ArgsDescriptorArgs,), {})
+        nmspc['Args'] = type(name+'Args', (ArgsDescriptorArgs,), {})
         return super().__new__(meta, name, bases, nmspc)
 
 # Args can be more expressive.

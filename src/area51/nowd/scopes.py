@@ -62,7 +62,7 @@ class Scope(object):
 
     def __delitem__(self, item):
         instance, desc = item
-        return desc.__del__(instance)
+        return desc.__delete__(instance)
 
 Scope.context = Scope()
 
@@ -84,7 +84,7 @@ class LoggingScope(NullScope):
             self.indent -= 1
 
     def __delitem__(self, item):
-        self.log.info('DEL {!r} = {!r}'.format(item, value))
+        self.log.info('DEL {!r}'.format(item))
         return super().__delitem__(item)
 
     def __setitem__(self, item, value):

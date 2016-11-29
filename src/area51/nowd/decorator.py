@@ -7,6 +7,6 @@ def node(fget, *args, **kwargs):
     signature = inspect.signature(fget)
 
     base = ArgsDescriptor if len(signature.parameters) > 1 else Descriptor
-    cls = type(fget.__code__.co_name + 'Descriptor', (base, ), {})
+    cls = type(fget.__code__.co_name, (base, ), {})
 
     return cls(fget, *args, **kwargs)

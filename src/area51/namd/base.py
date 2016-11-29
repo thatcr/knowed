@@ -1,5 +1,10 @@
 from .meta import NamdClass
 
+#
+# should the named mechanism just be some
+# node based init? but it needs to cache across graphs?
+# no real re-use there.
+#
 
 class NamdObject(object, metaclass=NamdClass):
     def __init__(self, *args):

@@ -13,7 +13,6 @@ class FibThing(NodeBase):
 
 def test_args_fib():
     thing = FibThing()
-
     with LoggingScope():
         with raises(ValueError):
             thing.Fib(-1)

@@ -51,6 +51,8 @@ def test_args_dict():
     assert hasattr(ArguedThing.WithArgs, 'Args')
     assert hasattr(ArguedThing.Fib, 'Args')
 
+    assert ArguedThing.Fib.Args.__name__ == 'FibArgs'
+
     with raises(ValueError):
         assert t.Fib(-1)
 

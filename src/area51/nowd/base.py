@@ -18,3 +18,11 @@ class NodeBase(object):
             Scope.context[self, desc] = value
             return
         return super().__setattr__(item, value)
+
+    def __delattr__(self, item):
+        desc = getattr(super().__getattribute__('__class__'), item, None)
+        if isinstance(desc, property):
+            # should we stack up contexts here? or use the same one?
+            del Scope.context[self, desc]
+            return
+        return super().__delattr__(item, value)
