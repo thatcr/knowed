@@ -1,9 +1,9 @@
 from pytest import raises
 
-from .. import nowd, NowdObject, LoggingScope
+from .. import node, NodeBase, LoggingScope
 
-class FibThing(NowdObject):
-    @nowd
+class FibThing(NodeBase):
+    @node
     def Fib(self, x):
         if x < 0:
             raise ValueError('cannot calculate fib < 0')
