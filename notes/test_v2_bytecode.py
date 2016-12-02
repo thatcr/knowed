@@ -24,14 +24,6 @@ def postfix(x):
 
 if __name__ == '__main__':
 
-    def test_it():
-        x = prefix()
-        if x is Ellipsis:
-            return x
-        return 123
-
-    import dis
-    dis.dis(test_it.__code__)
 
     bytecode = Bytecode.from_code(my_function.__code__)
     # dump_bytecode(bytecode)
@@ -56,6 +48,7 @@ if __name__ == '__main__':
         yield Instr('COMPARE_OP', Compare.IS)
         yield Instr('POP_JUMP_IF_TRUE', calculate)
         yield Instr('RETURN_VALUE')
+        yield Instr('POP_TOP')
 
         # need to check the reurn value of the call, and return it directly before the finally block is setup
         yield calculate
@@ -66,10 +59,11 @@ if __name__ == '__main__':
 
         # return value is now on the top of the stack, so we can cache it in postfix?
         yield return_finally
-        yield Instr('DUP_TOP')
-        yield Instr('LOAD_CONST', postfix)
-        yield Instr('ROT_TWO')
-        yield Instr('CALL_FUNCTION', 1)
+        yield Instr('DUP_TOP')              # copy the return value to the top
+        yield Instr('LOAD_CONST', postfix)  # load a return function
+        yield Instr('ROT_TWO')              # swap so it's a call
+        yield Instr('CALL_FUNCTION', 1)     # invoke with the return value
+        yield Instr('POP_TOP')
         yield Instr('END_FINALLY')
 
 
@@ -79,5 +73,9 @@ if __name__ == '__main__':
 
     my_function.__code__ = bytecode.to_code()
     my_function(1,2,3)
+
+    import dis
+    dis.dis(my_function.__code__)
+
 
 
